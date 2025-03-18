@@ -57,6 +57,7 @@ int main() {
 **Current version: 1.1.0**
 
 + 1.x.x
-  + 1.0.x
+  + 1.1.x
     + 1.1.0 - LRU_cache added
+  + 1.0.x
     + 1.0.0 - base functional of Decorator base-class
