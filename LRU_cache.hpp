@@ -1,7 +1,6 @@
 #pragma once
 
 #include <unordered_map>
-#include <iterator>
 #include <utility>
 #include <tuple>
 #include <list>

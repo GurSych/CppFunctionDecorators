@@ -1,6 +1,7 @@
 #include <iostream>
-#include "DecoratorLibrary.hpp"
 #include <string>
+
+#include "DecoratorLibrary.hpp"
 
 #define TEMPLATED 0
 
@@ -25,14 +26,14 @@ struct HelloDecorator: gtdDecoratorChild {
 };
 #endif
 
-float func(std::string str, unsigned int n) {
+float func(const std::string& str, unsigned int n) {
     for(unsigned int i = 0u; i < n; ++i) {
         std::cout << str << std::endl;
     }
     return -3.14 - n;
 }
 
-HelloDecorator<float,std::string,unsigned int> decorated_func(func);
+HelloDecorator<float,const std::string&,unsigned int> decorated_func(func); // HelloDecorator decorated_func(func);
 
 int main() {
     std::string str = "C++ is cool!";

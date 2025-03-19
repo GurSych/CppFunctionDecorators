@@ -1,9 +1,9 @@
 #include <iostream>
-#include "LRU_cache.hpp" // #include "DecoratorLibrary.hpp"
-#include <cmath>
-
 #include <thread>
 #include <chrono>
+#include <cmath>
+
+#include "LRU_cache.hpp" // #include "DecoratorLibrary.hpp"
 
 #define SIZED 0
 

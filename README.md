@@ -28,10 +28,11 @@ Decorator Library is my C++ library for creating various function decorators. It
 
 ```cpp
 #include <iostream>
-#include "LRU_cache.hpp" // #include "DecoratorLibrary.hpp"
-#include <cmath>
 #include <thread>
 #include <chrono>
+#include <cmath>
+
+#include "LRU_cache.hpp" // #include "DecoratorLibrary.hpp"
 
 unsigned long long int func(unsigned int n) {
     std::this_thread::sleep_for(std::chrono::milliseconds(2000));
