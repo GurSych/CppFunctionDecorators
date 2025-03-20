@@ -38,7 +38,7 @@ float func(const std::string& str, unsigned int n) {
     for(unsigned int i = 0u; i < n; ++i) {
         std::cout << str << std::endl;
     }
-    return -3.14 - n;
+    return -3.14f - n;
 }
 
 HelloDecorator<float,const std::string&,unsigned int> decorated_func(func); // HelloDecorator decorated_func(func);
