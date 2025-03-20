@@ -19,12 +19,7 @@ Decorator Library is my C++ library for creating various function decorators. It
 
 ## LRU_cache
 
-> This section is in development...
-
-<details>
-<summary>Code example</summary>
-
-> This section is in development...
+Library provides you with a `gtd::LRU_cache` class. Its consturctor takes a _function pointer_ and creates a callable function object. This object saves returned value for each first call with unique set of arguments. The constuctor can also takes a second argument with `std::size_t` type - number of cache cells.
 
 ```cpp
 #include <iostream>
@@ -51,7 +46,10 @@ int main() {
 }
 ```
 
-</details>
+This code has a simple long-computing function (it just sleeps for two seconds before returning std::pow). This function are sent to `lru_func`'s constructor with `std::size_t` value of two. First three calls are computed for two seconds because they have unique sets of arguments. Cache has only two cells so this object saves only last two calls. That's because the 4th and 5th calls return their values instantly but 6th one are computed for two seconds again.
+
+> [!WARNING]
+> The type of each argument must be hashable via std::hash. Override std::hash if your function takes an object of a class as an argument.
 
 # Versions
 

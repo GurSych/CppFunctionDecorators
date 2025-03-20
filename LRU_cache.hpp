@@ -7,7 +7,7 @@
 
 #include <functional>
 namespace std {
-    template <class... Ts>
+    template <typename... Ts>
     class hash<std::tuple<Ts...>> {
     public:
         std::size_t operator()(const std::tuple<Ts...>& _tuple) const {
@@ -19,7 +19,7 @@ namespace std {
 }
 
 namespace gtd {
-    template <class rT, class... argTs>
+    template <typename rT, typename... argTs>
     class LRU_cache {
     public:
         explicit LRU_cache(rT(*_ptr)(argTs...)) : func_ptr{_ptr} {}
@@ -44,6 +44,6 @@ namespace gtd {
         rT(*func_ptr)(argTs...){};
         std::size_t cache_size{};
         std::list<std::pair<std::tuple<argTs...>,rT>> cache{};
-        std::unordered_map<std::tuple<argTs...>, typename std::list<std::pair<std::tuple<argTs...>,rT>>::iterator, std::hash<std::tuple<argTs...>>> cache_map{};
+        std::unordered_map<std::tuple<argTs...>, typename std::list<std::pair<std::tuple<argTs...>,rT>>::iterator> cache_map{};
     };
 }
