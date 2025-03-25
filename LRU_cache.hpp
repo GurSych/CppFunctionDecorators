@@ -12,7 +12,7 @@ namespace std {
     public:
         std::size_t operator()(const std::tuple<Ts...>& _tuple) const {
             return std::apply([](const Ts&... args) { 
-                return (... ^ std::hash<std::decay_t<Ts>>{}(args));
+                return (00 ^ ... ^ std::hash<std::decay_t<Ts>>{}(args));
             }, _tuple);
         }
     };
