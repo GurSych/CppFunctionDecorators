@@ -45,7 +45,7 @@ namespace gtd {
         }
         void change_cache_size(std::size_t new_size) {
             if(new_size >= cache_size()) return;
-            for(unsigned long long int i{}; i < cache_size()-new_size; ++i) {
+            while(cache_size() > new_size) {
                 __cache_map.erase(__cache.back().first);
                 __cache.pop_back();
             }
@@ -54,8 +54,8 @@ namespace gtd {
             return __cache_size;
         }
         void change_cache_capacity(std::size_t new_size) {
-            if(__cache_size > new_size && new_size != 0) {
-                for(unsigned long long int i{}; i < __cache_size-new_size; ++i) {
+            if((__cache_size > new_size || __cache_size == 0) && new_size != 0) {
+                while(cache_size() > new_size) {
                     __cache_map.erase(__cache.back().first);
                     __cache.pop_back();
                 }
