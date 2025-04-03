@@ -117,8 +117,8 @@ This code has a simple long-computing function (it just sleeps for two seconds b
 .cache_capacity() - returns the current maximum size of the cache as `std::size_t` (0 - if an infinity size)<br>
 .change_cache_capacity(_std::size_t_) - changes the maximum size of the cache to the specified size (0 - to an infinity size)<br>
 .clear_cache() - clear the all cache<br>
-.clear_cache(argTs...) - clear the cache's entry with the specified arguments<br>
-.clear_cache(std::tuple<argTs...>) - clear the cache's entry with the specified arguments<br>
+.clear_cache(_argTs..._) - clear the cache's entry with the specified arguments<br>
+.clear_cache(_std::tuple<argTs...>_) - clear the cache's entry with the specified arguments<br>
 
 # Versions
 
