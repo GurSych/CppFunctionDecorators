@@ -106,13 +106,13 @@ int main() {
 
 <img src="Tests and examples\lru_test.gif" alt="LRU_cache demonstration" width="100%">
 
-This code has a simple long-computing function (it just sleeps for two seconds before returning std::pow). This function are sent to `lru_func`'s constructor with `std::size_t` value of two. First three calls are computed for two seconds because they have unique sets of arguments. Cache has only two entries so this object saves only last two calls. That's because the 4th and 5th calls return their values instantly but 6th one are computed for two seconds again.
+This code has a simple long-computing function (it just sleeps for two seconds before returning std::pow). This function are sent to `lru_func`'s constructor with `std::size_t` value of two. First three calls are computed for two seconds because they have unique sets of arguments. Cache can have only two entries so this object saves only last two calls. That's because the 4th and 5th calls return their values instantly but 6th one are computed for two seconds again.
 
 > [!WARNING]
 > The type of each argument must be hashable via `std::hash`. Override `std::hash` if your function takes an object of a class as an argument.
 
 **Cache management methods:**<br>
-.cache_size() - returns the size of the cache as `std::size_t` (number of saved entries)<br>
+.cache_size() - returns the size of the cache as `std::size_t`<br>
 .reduce_cache_size(_std::size_t_) - reduces the size of the cache to the specified size<br>
 .cache_capacity() - returns the current maximum size of the cache as `std::size_t` (0 - if an infinity size)<br>
 .change_cache_capacity(_std::size_t_) - changes the maximum size of the cache to the specified size (0 - to an infinity size)<br>
