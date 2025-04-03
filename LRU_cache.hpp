@@ -44,7 +44,6 @@ namespace gtd {
             return __cache_map.size();
         }
         void change_cache_size(std::size_t new_size) {
-            if(new_size >= cache_size()) return;
             while(cache_size() > new_size) {
                 __cache_map.erase(__cache.back().first);
                 __cache.pop_back();
@@ -70,6 +69,7 @@ namespace gtd {
             clear_cache(std::make_tuple(args...));
         }
         void clear_cache(std::tuple<argTs...> args) {
+            if(__cache_map.count(args) == 0) return;
             __cache.erase(__cache_map[args]);
             __cache_map.erase(args);
         }
