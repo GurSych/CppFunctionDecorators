@@ -15,6 +15,8 @@ Decorator Library is my C++ library for creating various function decorators. It
 > [!NOTE]
 > All library classes are in `gtd::` namespace.
 
+## Creating simple decorator
+
 Decorator is a class which constuctor takes a _function pointer_ and saves it. The resulting object is callable and takes the same arguments' types.<br>
 The library provides you with a `gtd::Decorator` base-class. To create your own decorator you should create an inherited class and override its _call operator_.
 
@@ -75,7 +77,7 @@ This code shows you HelloDecorator class that can take any function and writes h
 
 ## LRU_cache
 
-The library provides you with a `gtd::LRU_cache` class. Its consturctor takes a _function pointer_ and creates a callable function object. This object saves returned value for each first call with unique set of arguments. The constuctor can also takes a second argument with `std::size_t` type - size of cache (number of cells).
+The library provides you with a `gtd::LRU_cache` class. Its consturctor takes a _function pointer_ and creates a callable function object. This object saves returned value for each first call with unique set of arguments. The constuctor can also takes a second argument with `std::size_t` type - size of cache (number of entries).
 
 ```cpp
 #include <iostream>
@@ -104,17 +106,27 @@ int main() {
 
 <img src="Tests and examples\lru_test.gif" alt="LRU_cache demonstration" width="100%">
 
-This code has a simple long-computing function (it just sleeps for two seconds before returning std::pow). This function are sent to `lru_func`'s constructor with `std::size_t` value of two. First three calls are computed for two seconds because they have unique sets of arguments. Cache has only two cells so this object saves only last two calls. That's because the 4th and 5th calls return their values instantly but 6th one are computed for two seconds again.
+This code has a simple long-computing function (it just sleeps for two seconds before returning std::pow). This function are sent to `lru_func`'s constructor with `std::size_t` value of two. First three calls are computed for two seconds because they have unique sets of arguments. Cache can have only two entries so this object saves only last two calls. That's because the 4th and 5th calls return their values instantly but 6th one are computed for two seconds again.
 
 > [!WARNING]
 > The type of each argument must be hashable via `std::hash`. Override `std::hash` if your function takes an object of a class as an argument.
 
+**Cache management methods:**<br>
+.cache_size() - returns the size of the cache as `std::size_t`<br>
+.reduce_cache_size(_std::size_t_) - reduces the size of the cache to the specified size<br>
+.cache_capacity() - returns the current maximum size of the cache as `std::size_t` (0 - if an infinity size)<br>
+.change_cache_capacity(_std::size_t_) - changes the maximum size of the cache to the specified size (0 - to an infinity size)<br>
+.clear_cache() - clear the all cache<br>
+.clear_cache(_argTs..._) - clear the cache's entry with the specified arguments<br>
+.clear_cache(_std::tuple<argTs...>_) - clear the cache's entry with the specified arguments<br>
+
 # Versions
 
-**Current version: 1.1.0**
+**Current version: 1.1.1**
 
 + 1.x.x
   + 1.1.x
+    + 1.1.1 - LRU_cache's cache management methods added
     + 1.1.0 - LRU_cache added
   + 1.0.x
     + 1.0.0 - base functional of Decorator base-class
