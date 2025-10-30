@@ -6,14 +6,22 @@
 #include <list>
 
 #include <functional>
+namespace gtd {
+    template <typename T>
+    inline void hash_combine(size_t& hash, const T& obj) {
+        hash ^= std::hash<T>{}(obj) + 0x9e3779b9 + (hash << 6) + (hash >> 2); 
+    }
+}
 namespace std {
     template <typename... Ts>
     class hash<std::tuple<Ts...>> {
     public:
         std::size_t operator()(const std::tuple<Ts...>& _tuple) const {
-            return std::apply([](const Ts&... args) { 
-                return (00 ^ ... ^ std::hash<std::decay_t<Ts>>{}(args));
+            std::size_t hash = 00;
+            std::apply([&hash](const Ts&... args) { 
+                (gtd::hash_combine(hash,args),...);
             }, _tuple);
+            return hash;
         }
     };
 }

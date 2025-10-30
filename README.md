@@ -122,10 +122,11 @@ This code has a simple long-computing function (it just sleeps for two seconds b
 
 # Versions
 
-**Current version: 1.1.1**
+**Current version: 1.1.2**
 
 + 1.x.x
   + 1.1.x
+    + 1.1.2 - Improved LRU_cache's hashing
     + 1.1.1 - LRU_cache's cache management methods added
     + 1.1.0 - LRU_cache added
   + 1.0.x
